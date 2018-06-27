@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>button</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/button<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="button">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox">
+                        <button class="btn btn-success" id="test1" style="width: 5em">搜索</button>
+                        <button class="btn btn-warning" id="test2" style="margin-left: 30px;width: 5em">重置</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用，目前仅支持search/reset两种类型。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.btn1 = new Button({
+    btn:$('#test1'),
+    type:'search',
+    onClick:()=>{
+        message({
+            type:'info',
+            msg:'开始搜索动画，3s后结束'
+        });
+        setTimeout(()=>{
+            this.btn1.toggleIcon(false);
+        },3000);
+    }
+});
+
+this.btn2 = new Button({
+    btn:$('#test2'),
+    type:'reset',
+    onClick:()=>{
+        message({
+            type:'info',
+            msg:'开始重置动画，3s后结束'
+        });
+        setTimeout(()=>{
+            this.btn2.toggleIcon(false);
+        },3000);
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox">
+                        <button class="btn btn-success" id="test3" style="width: 5em">搜索</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>点击后才触发开始动画</span></div>
+                <div class="demo-des">
+                    当点击后需要条件判断才启用动画时，将iconAutoShow设置为false，通过调用toggleIcon方法来显示动画。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.btn3 = new Button({
+    btn:$('#test3'),
+    type:'search',
+    onClick:()=>{
+        this.btn3.toggleIcon(true);
+        message({
+            type:'info',
+            msg:'手动触发动画，3s后结束'
+        });
+        setTimeout(()=>{
+            this.btn3.toggleIcon(false);
+        },3000);
+    },
+    iconAutoShow:false
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/button<%=hash%>.js"></script>
+</body>
+</html>

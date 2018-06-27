@@ -1,0 +1,89 @@
+@import "../../less/base";
+
+.ys-check-drop-c {
+    width: 100%;
+    height: 32px;
+    position: relative;
+    line-height: 32px;
+    .ys-check-drop-btn {
+        width: 100%;
+        height: 100%;
+        padding: 0 15px;
+        cursor: pointer;
+        .ys-check-drop-value {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            color: #999;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            &.has-value {
+                color: #333;
+                &+.fa {
+                    color: #333;
+                }
+            }
+        }
+        .fa-caret-down {
+            position: absolute;
+            right: 5px;
+            line-height: 32px;
+            transform: rotate(0deg);
+            transition: all .3s;
+            color: #999;
+        }
+    }
+    &.ys-open {
+        .fa-caret-down {
+            transform: rotate(180deg);
+        }
+    }
+    .ys-check-drop-list-o {
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 1px 1px 5px rgba(0,0,0,.3);
+        padding: 10px 0 10px 20px;
+        z-index: 12999;
+        min-width: 500px;
+        display: none;
+        .ys-check-drop-i {
+            display: inline-block;
+            margin-right: 20px;
+            cursor: pointer;
+            color: #999;
+            &.checked {
+                color: @mainColor;
+            }
+            &:hover:not(.checked) {
+                color: #333;
+            }
+        }
+    }
+}
+
+.ys-check-drop-list-o.open-start {
+    display: block;
+    transform: scaleY(0.3);
+    opacity: 0;
+}
+.ys-check-drop-list-o.opening {
+    transition: all ease-in .1s;
+    transform-origin: top;
+}
+.ys-dropdown-dropup .ys-check-drop-list-o.opening {
+    transform-origin: bottom;
+}
+.ys-check-drop-list-o.open-end {
+    display: block;
+    transform: scaleY(1);
+    opacity: 1;
+}
+.ys-check-drop-cbtn {
+    color: @mainColor;
+    cursor: pointer;
+    display: inline-block;
+    &:hover {
+        text-decoration: underline;
+    }
+}

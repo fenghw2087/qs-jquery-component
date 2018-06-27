@@ -1,0 +1,78 @@
+@import "../../less/base";
+
+.ys-drag-file-outer {
+    height: 100px;
+    width: 100%;
+    border: 1px dashed @mainColor;
+    background-color: #fafdff;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 30px;
+    padding: 20px 0;
+    color: #999;
+    font-size: 12px;
+    position: relative;
+    .upload-file-btn-link {
+        color: @mainColor;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &>input {
+        display: none;
+    }
+    .drag-outer {
+        display: block;
+    }
+    .drag-file-name-c {
+        display: none;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+        .drag-file-name {
+            color: #333;
+            line-height: 30px;
+            font-size: 14px;
+            margin-top: 15px;
+            transition: margin-top .3s;
+        }
+        .drag-delete-btn {
+            opacity: 0;
+            color: #999;
+            transition: opacity .3s;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+            > i {
+                top: 50%;
+                left: 50%;
+                line-height: 20px;
+                margin-top: -10px;
+                margin-left: -10px;
+                margin-right: 5px;
+                color: @errorColor;
+                font-size: 16px;
+            }
+        }
+        &:hover {
+            .drag-file-name {
+                margin-top: 0;
+            }
+            .drag-delete-btn {
+                opacity: 1;
+            }
+        }
+    }
+    &.full {
+        .drag-outer {
+            display: none;
+        }
+        .drag-file-name-c {
+            display: block;
+        }
+    }
+}

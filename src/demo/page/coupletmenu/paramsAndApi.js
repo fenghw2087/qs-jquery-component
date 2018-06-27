@@ -1,0 +1,64 @@
+export const propsList = [
+    {
+        param:'obj',
+        description:'一个长度的jqueryDom',
+        type:'jQueryObject',
+        default:''
+    },{
+        param:'renderLi',
+        description:'行渲染回调',
+        type:'Function',
+        default:'row=>row.name'
+    },{
+        param:'titles',
+        description:'级联表头标题',
+        type:'Array',
+        default:'["选项1",...]'
+    },{
+        param:'list',
+        description:'数据源',
+        type:'Array',
+        default:'[]'
+    },{
+        param:'hasNext',
+        description:'当前选中是否包含下级选项的回调函数',
+        type:'function',
+        default:'row=>row.children && row.children.length'
+    },{
+        param:'renderNext',
+        description:'获取下级数据的回调函数，必须返回一个promise对象',
+        type:'function',
+        default:''
+    },{
+        param:'renderResult',
+        description:'显示选中结果的回调函数',
+        type:'function',
+        default:''
+    },{
+        param:'placeholder',
+        description:'未选择时的文案',
+        type:'String',
+        default:'不限'
+    },{
+        param:'onSelectChange',
+        description:'选中回调函数',
+        type:'function',
+        default:'()=>{}'
+    }
+];
+
+export const apiList = [
+    {
+        funcName:'renderList',
+        description:'动态设置一级选项',
+        params:'list:Array'
+    },{
+        funcName:'setData',
+        description:'设置当前显示的值，但并不处理选项',
+        params:'data:String'
+    },{
+        funcName:'reset',
+        description:'重置组件',
+        params:''
+    }
+];

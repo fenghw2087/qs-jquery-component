@@ -1,0 +1,97 @@
+@import "../../less/base";
+
+.drag-upload-outer {
+  height: 100px;
+  width: 100%;
+}
+.drag-upload-img-item-c {
+  display: inline-block;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  transition: all .3s;
+  transform: translateY(0);
+  opacity: 1;
+}
+.drag-upload-img-item-c > img {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+.drag-upload-img-item-c.drag-upload-img-in {
+  transform: translateY(-100%);
+  opacity: .3;
+}
+.add-new-img-btn-c {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 40px;
+  border: 1px dashed;
+  color: #999;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .3s;
+  vertical-align: top;
+}
+.add-new-img-btn-c:hover {
+  color: @mainColor;
+}
+.drag-upload-tool-c {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity .3s;
+  top: 0;
+  left: 0;
+  font-size: 18px;
+}
+.drag-upload-tool-c > .fa-search-plus {
+  color: #eee;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.drag-upload-tool-c > .fa-trash-o {
+  color: #eee;
+  cursor: pointer;
+}
+.drag-upload-img-item-c:hover .drag-upload-tool-c {
+  opacity: 1;
+}
+.drag-upload-tool-c > .fa:hover {
+  color: #fff;
+}
+
+.drag-upload-progress {
+  position: absolute;
+  height: 14px;
+  color: #000;
+  background-color: #ccc;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+.drag-upload-progress-bar {
+  position: absolute;
+  height: 14px;
+  transition:width .3s;
+  background-color: @successColor;
+}
+.drag-upload-progress-text {
+  line-height: 14px;
+  font-size: 12px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}

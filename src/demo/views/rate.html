@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rate</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/rate<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="rate">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div id="test1" style="display: inline-block"></div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new Rate({
+    outer:$('#test1'),
+    readOnly:false
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div id="test2" style="display: inline-block;margin-right: 30px"></div>
+                    <div id="test3" style="display: inline-block"></div>
+                </div>
+                <div class="demo-title"><span>只读评分，允许半星</span></div>
+                <div class="demo-des">
+                    只读评分，设置readOnly为true；通过currentRate来设置当前星数，允许半星。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new Rate({
+    outer:$('#test2'),
+    currentRate:2
+});
+
+new Rate({
+    outer:$('#test3'),
+    currentRate:3.4
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div id="test4" style="display: inline-block"></div>
+                </div>
+                <div class="demo-title"><span>显示不同颜色和文字</span></div>
+                <div class="demo-des">
+                    通过colorCB和textCB两个回调函数来，显示不同的颜色和文字。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new Rate({
+    outer:$('#test4'),
+    readOnly:false,
+    colorCB:n=>{
+        n = parseInt(n);
+        const color = [ '#ea6345', '#ea6345', '#aa6e92', '#4585f3', '#16a4c8', '#00bf8b' ];
+        return color[n];
+    },
+    textCB:n=>{
+        if(n === 0) return '';
+        if(n<2) return '差';
+        if(n<4) return '一般';
+        return '很好'
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div id="test5"></div>
+                    <div class="flexbox aic" style="margin-top: 20px">
+                        <div style="width: 100px">
+                            <input type="number" placeholder="输入评分" class="form-control" />
+                        </div>
+                        <button class="btn btn-success btn-test btn-test1">设置评分</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>设置只读评分</span></div>
+                <div class="demo-des">
+                    通过setStar来设置只读评分的星数。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.rate = new Rate({
+outer:$('#test5'),
+colorCB:n=>{
+    n = parseInt(n);
+    const color = [ '#ea6345', '#ea6345', '#aa6e92', '#4585f3', '#16a4c8', '#00bf8b' ];
+    return color[n];
+},
+textCB:n=>{
+    if(n === 0) return '';
+    if(n<2) return '差';
+    if(n<4) return '一般';
+    return '很好'
+}
+});
+
+const that = this;
+const rate = $(this).prev().find('input').val();
+that.rate.setStar(rate);
+message({
+    type:'success',
+    msg:'当前评分为'+rate
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/rate<%=hash%>.js"></script>
+</body>
+</html>

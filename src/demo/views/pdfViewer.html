@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pdfViewer</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/pdfViewer<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="pdfViewer">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 100px">
+                    <button class="btn btn-success btn-test btn-test1">点击预览PDF</button>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.pdfViewer = new PdfViewer();
+this.pdfViewer.show('http://yscredit-test.oss-cn-hangzhou.aliyuncs.com/sz38af9f34b3eb4c98a051a20569e26118.pdf');</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/pdfViewer<%=hash%>.js"></script>
+</body>
+</html>

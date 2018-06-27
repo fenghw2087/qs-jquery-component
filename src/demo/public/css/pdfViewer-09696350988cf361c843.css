@@ -1,0 +1,29 @@
+.PDFViewer-outer {
+  display: none;
+  background-color: rgba(0, 0, 0, .6);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 50px 0;
+  z-index: 21000;
+}
+.PDFViewer-back {
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.PDFViewer-outer iframe {
+  width: 100%;
+  height: 100%;
+}
+.PDFViewer-outer > .fa-close {
+  position: absolute;
+  left: 50%;
+  margin-left: 560px;
+  top: 10px;
+  color: #fff;
+  cursor: pointer;
+}

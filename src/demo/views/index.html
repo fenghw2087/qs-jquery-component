@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件库</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/introduce<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="introduce">
+            <div class="items-title"></div>
+            <div id="tables"></div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/introduce<%=hash%>.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+.header {
+    height: 60px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+    margin-top: -60px;
+    position: relative;
+    z-index: 999;
+}
+body {
+    padding-top: 60px;
+}
+.header-center {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    font-size: 24px;
+}
+.content-outer {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    overflow-y: scroll;
+}
+.content-container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 10px 230px;
+}
+.nav-container {
+    width: 210px;
+    overflow: hidden;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -600px;
+    padding: 10px;
+}
+.nav-c {
+    overflow: auto;
+    height: 100%;
+    width: 260px;
+    padding-right: 50px;
+}
+.content-c {
+    flex: 1;
+}
+.content-title {
+    font-size: 24px;
+    line-height: 60px;
+    height: 60px;
+}
+.content-des {
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 24px;
+    min-height: 24px;
+}
+.demo-section {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 0;
+    border-radius: 4px;
+}
+.demo-show {
+    padding: 30px 20px;
+}
+.demo-title {
+    position: relative;
+    line-height: 21px;
+    padding: 0 15px;
+}
+.demo-title > span {
+    display: inline-block;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    padding:0 5px;
+}
+.demo-title::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: #ddd;
+    top: 10px;
+    left: 0;
+    z-index: 0;
+}
+.demo-des {
+    padding: 20px 100px 20px 20px;
+    position: relative;
+}
+.demo-code {
+    display: none;
+    padding: 20px;
+    border-top: 1px dashed #ddd;
+}
+.demo-des > .fa-code {
+    position: absolute;
+    right: 20px;
+    padding: 0 5px;
+    cursor: pointer;
+    top: 20px;
+}
+.demo-des > .fa-copy {
+    position: absolute;
+    right: 50px;
+    padding: 0 5px;
+    cursor: pointer;
+    display: none;
+    top: 20px;
+}
+.demo-des.open > .fa-copy{
+    display: block;
+}
+.demo-des > .fa:hover {
+    color: #00b793;
+}
+.demo-des.open + .demo-code {
+    display: block;
+}
+.demo-code > pre {
+    border: none;
+}
+.params-detail {
+    margin-bottom: 40px;
+}
+.params-detail-title {
+    font-size: 16px;
+    margin-top: 20px;
+}
+.params-detail-table {
+    margin-top: 10px;
+}
+.btn-test:not(:first-child) {
+    margin-left: 20px;
+}

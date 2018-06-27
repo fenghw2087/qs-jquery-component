@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>confirmModal</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/confirmModal<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="confirmModal">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <button class="btn btn-success btn-test btn-test1">弹出confirmModal</button>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用，初始化modal时不设置title和确认回调，每次调用modal时再根据需要设置，做到modal的复用。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.confirmModal = new ConfirmModal({});
+
+const that = this;
+that.confirmModal.setData({
+    title:'确认删除',
+    msg:'是否确认删除本条信息？',
+    confirmFn:()=>{
+        that.confirmModal.modalHide();
+        message({
+            type:'success',
+            msg:'删除成功！'
+        })
+    }
+}).modalShow();</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/confirmModal<%=hash%>.js"></script>
+</body>
+</html>

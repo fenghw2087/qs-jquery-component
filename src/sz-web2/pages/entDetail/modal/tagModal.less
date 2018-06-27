@@ -1,0 +1,143 @@
+@import '../../../../common/less/base';
+
+.exist-tag-o {
+    padding: 10px 0;
+    .exist-tag-c {
+        display: inline-block;
+        position: relative;
+        margin: 0 15px 10px 0;
+        padding: 0 10px;
+        line-height: 24px;
+        background-color: @mainColor;
+        color: #fff;
+        border-radius: 12px;
+        font-size: 12px;
+        .tag-delete-icon {
+            position: absolute;
+            display: none;
+            right: -6px;
+            top: -9px;
+            width: 16px;
+            height: 16px;
+            font-size: 12px;
+            line-height: 8px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            text-align: center;
+            background-color: @mainColor;
+            cursor: pointer;
+            &:hover {
+                background-color: @errorColor;
+            }
+        }
+        &.can-delete {
+            .tag-delete-icon {
+                display: block;
+            }
+        }
+    }
+}
+
+.tag-tool-o {
+    height: 350px;
+    .tag-tool-nav-c {
+        height: 350px;
+        width: 150px;
+        float: left;
+        border-right: 1px solid #ddd;
+        padding: 10px 0;
+        overflow-y: auto;
+        .tag-tool-bar-i-c {
+            color: #666;
+            line-height: 32px;
+            cursor: pointer;
+            position: relative;
+            .tag-tool-bar-i {
+                padding: 0 20px;
+                border-right: 2px solid transparent;
+                &:hover {
+                    color: @mainColor;
+                }
+            }
+            &:hover {
+                &::before {
+                    color: @mainColor;
+                }
+            }
+            &.has-sec::before {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border-left: 5px solid;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                position: absolute;
+                right: 6px;
+                top: 10px;
+                transform: rotate(0);
+                transition: all .3s;
+            }
+            &.active {
+                color: @mainColor;
+                &.has-sec::before {
+                    transform: rotate(90deg);
+                }
+                .tag-tool-bar-i {
+                    border-right: 2px solid @mainColor;
+                }
+                .tag-tool-bar-sec-c {
+                    display: block;
+                }
+            }
+            .tag-tool-bar-sec-c {
+                padding: 10px 0;
+                line-height: 30px;
+                color: #999;
+                display: none;
+                .tag-tool-sec-i {
+                    padding-left: 40px;
+                    &:hover {
+                        color: @mainColor;
+                    }
+                    &.active {
+                        background-color: #f5f5f5;
+                        color: @mainColor;
+                    }
+                }
+            }
+        }
+    }
+    .tag-tool-add-c {
+        height: 350px;
+        width: 580px;
+        float: right;
+        padding: 10px 20px;
+        overflow-y: auto;
+        .new-tag-c-1 {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .add-tag-i {
+            display: inline-block;
+            margin: 0 15px 10px 0;
+            height: 24px;
+            padding: 0 10px;
+            border: 1px solid #ddd;
+            background-color: #f5f5f5;
+            color: #999;
+            border-radius: 12px;
+            font-size: 12px;
+            line-height: 22px;
+            cursor: pointer;
+            &.is-muti {
+                border-radius: 0;
+            }
+            &.checked {
+                background-color: @mainColor;
+                color: #fff;
+                border: 1px solid @mainColor;
+            }
+        }
+    }
+}

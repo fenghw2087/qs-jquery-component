@@ -1,0 +1,125 @@
+@import "../../less/base";
+
+.modal-backdrop {
+    z-index: 10040;
+}
+.modal2 {
+    z-index: 10050;
+    .modal-header {
+        height: 40px;
+        background-color: @mainColor;
+        color: #fff;
+        text-align: left;
+        line-height: 40px;
+        position: relative;
+        padding: 9px 10px 0 20px;
+        border-bottom: none;
+        border-radius: 5px 5px 0 0;
+        .modal-title {
+            font-size: 16px;
+        }
+        .close2 {
+            background-color: inherit;
+            position: absolute;
+            right: 20px;
+            font-size: 32px;
+            color: #fff;
+            cursor: pointer;
+            top: 0;
+            line-height: 34px;
+        }
+    }
+    .modal-content {
+        border: none;
+    }
+    .modal-header button.close {
+        width: 25px;
+        height: 25px;
+        overflow: hidden;
+        opacity: 1;
+        background: url("../../../images/iconGroup.png") 0 -274px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -12px !important;
+    }
+    .modal-footer {
+        border-top: none;
+        padding: 15px 30px 30px;
+        text-align: right;
+        .confirm-btn {
+            font-size: 16px;
+            padding: 4px 12px;
+        }
+        .btn-cancel {
+            font-size: 16px;
+            padding: 4px 12px;
+            border: none;
+            background-color: inherit;
+            color: @mainColor;
+        }
+    }
+
+    .modal-footer-fail {
+        margin-bottom: 5px;
+        color: @errorColor;
+    }
+    .modal-footer-fail > i {
+        margin-right: 5px;
+    }
+
+    .modal-c-i-o {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        &:last-child {
+            margin-bottom: 20px;
+        }
+        .modal-c-i {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-right: 30px;
+            .modal-c-i-t {
+                color: #333;
+                font-size: 12px;
+                height: 22px;
+                line-height: 22px;
+                &.is-must::before {
+                    content: '*';
+                    color: red;
+                }
+            }
+            .modal-c-i-c {
+                height: 33px;
+                &>input {
+                    font-size: 12px;
+                    color: @mainColor;
+                    border: none;
+                    width: 100%;
+                    line-height: 32px;
+                    height: 32px;
+                    padding: 0 10px;
+                    background-color: inherit;
+                    border-bottom: 1px solid #ddd;
+                    border-radius: 0;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+                .ys-open {
+                    .btn.ys-dropdown-btn {
+                        box-shadow: none;
+                    }
+                }
+                .btn.ys-dropdown-btn {
+                    border: none;
+                }
+                .ys-dropdown-value.active {
+                    color: @mainColor;
+                }
+            }
+        }
+    }
+}
+

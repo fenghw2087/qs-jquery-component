@@ -1,0 +1,16 @@
+@import "../../less/base";
+
+@keyframes search{
+    from {
+        transform: rotate(0deg)  translate(3px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translate(3px) rotate(-360deg);
+    }
+}
+.search-animate {
+    animation: search 1s cubic-bezier(.45,.74,.68,.42) infinite;
+}
+.btn > .fa {
+    margin-right: 5px;
+}

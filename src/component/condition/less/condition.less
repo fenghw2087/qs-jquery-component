@@ -1,0 +1,43 @@
+@import "../../less/base";
+
+.ys-condition-outer {
+  color: #999;
+}
+.ys-condition-outer.full {
+  height: 28px;
+  overflow: hidden;
+  transition: height ease-in-out .2s;
+  position: relative;
+}
+
+.ys-condition-btn {
+  margin-right: 10px;
+  padding: 0 10px;
+  line-height: 28px;
+  cursor: pointer;
+  display: inline-block;
+}
+.ys-condition-btn.active {
+  color: @mainColor;
+}
+.ys-condition-btn:last-child {
+  margin-right: 0;
+}
+.ys-condition-see-more,
+.ys-condition-hide-more {
+  float: right;
+  line-height: 28px;
+  padding: 0 5px;
+  cursor: pointer;
+  color: #666;
+}
+.ys-condition-hide-more {
+  display: none;
+}
+.ys-condition-btn:hover {
+  color: screen(@mainColor,#333);
+}
+.ys-condition-see-more:hover,
+.ys-condition-hide-more:hover{
+  color: screen(@mainColor,#333);
+}

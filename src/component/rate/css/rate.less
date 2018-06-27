@@ -1,0 +1,37 @@
+@import "../../less/base";
+
+.ys-rate-outer {
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+}
+.ys-rate-outer:not(.readOnly) .fa {
+    cursor: pointer;
+}
+.ys-rate-star:first-child {
+    display: none;
+}
+.ys-rate-star > .fa {
+    margin: 0 4px;
+    transition: all .3s;
+}
+.ys-rate-star:nth-child(2) > .fa {
+    margin-left: 0;
+}
+.ys-rate-star > .fa::before {
+    content: '\f005';
+}
+.ys-rate-star.active ~ .ys-rate-star > .fa::before {
+    content: '\f006';
+}
+.active.half-star + .ys-rate-star > .fa::before {
+    content: '\f123';
+}
+.rate-text {
+    min-width: 3em;
+    text-align: center;
+    padding: 0 5px;
+    color: #333;
+    font-size: 14px;
+}

@@ -1,0 +1,90 @@
+#test1,#test2{width:100%;height:400px;overflow:hidden}#test1>.c-section,#test2>.c-section{width:100%;height:100%;background-color:#00b793;color:#f6f7fb;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;font-size:20px}.carousel-outer {
+  position: relative;
+}
+.carousel-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.carousel-section.trans {
+  -webkit-transition: margin-left 0.7s;
+  transition: margin-left 0.7s;
+}
+.carousel-nav {
+  position: absolute;
+  width: 100%;
+  height: 14px;
+  bottom: 10px;
+  left: 0;
+  text-align: center;
+  pointer-events: none;
+  line-height: 0;
+}
+.carousel-nav-icon {
+  display: inline-block;
+  padding: 5px 0;
+  width: 14px;
+  height: 14px;
+  margin: 0 2px;
+  pointer-events: all;
+  cursor: pointer;
+  -webkit-transition: width .7s;
+  transition: width .7s;
+}
+.carousel-nav-i {
+  display: inline-block;
+  width: 90%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #fff;
+  opacity: .3;
+  -webkit-transition: all .7s;
+  transition: all .7s;
+}
+.carousel-nav-icon.active {
+  width: 26px;
+}
+.carousel-nav-icon:hover > .carousel-nav-i {
+  opacity: .75;
+}
+.carousel-nav-icon.active > .carousel-nav-i {
+  opacity: 1;
+}
+.carousel-side-pager {
+  position: absolute;
+  height: 100%;
+  width: 80px;
+  top: 0;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  opacity: .5;
+}
+.carousel-left-side-pager {
+  left: 0;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0, 0, 0, .3)), to(rgba(0, 0, 0, .0001)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, .3) 0, rgba(0, 0, 0, .0001) 100%);
+}
+.carousel-side-pager::before {
+  position: relative;
+  top: 50%;
+  margin-top: -10px;
+  line-height: 20px;
+}
+.carousel-left-side-pager::before {
+  content: '\F104';
+}
+.carousel-left-side-pager:hover {
+  opacity: 1;
+}
+.carousel-right-side-pager {
+  right: 0;
+  background-image: -webkit-gradient(linear, right top, left top, color-stop(0, rgba(0, 0, 0, .3)), to(rgba(0, 0, 0, .0001)));
+  background-image: linear-gradient(to left, rgba(0, 0, 0, .3) 0, rgba(0, 0, 0, .0001) 100%);
+}
+.carousel-right-side-pager::before {
+  content: '\F105';
+}
+.carousel-right-side-pager:hover {
+  opacity: 1;
+}

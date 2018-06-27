@@ -1,0 +1,40 @@
+export const propsList = [
+    {
+        param:'outer',
+        description:'外部容器，一个长度的jqueryDom',
+        type:'jQueryObject',
+        default:''
+    },{
+        param:'placeholder',
+        description:'提示文案',
+        type:'String',
+        default:'支持Excel文件，默认识别第一个sheet文件'
+    },{
+        param:'fileTypes',
+        description:'允许上传的文件类型数组',
+        type:'Array',
+        default:''
+    },{
+        param:'title',
+        description:'标题描述',
+        type:'String',
+        default:''
+    },{
+        param:'onFileReady',
+        description:'文件选择后的回调函数，参数为文件',
+        type:'function',
+        default:'()=>{}'
+    }
+];
+
+export const apiList = [
+    {
+        funcName:'getFile',
+        description:'获取当前上传的文件',
+        params:''
+    },{
+        funcName:'reset',
+        description:'重置，清空已经存在的文件',
+        params:''
+    }
+];

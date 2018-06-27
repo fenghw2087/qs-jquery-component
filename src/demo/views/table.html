@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/table<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="table">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 280px">
+                    <div id="test1" style="min-height: 200px"></div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.table1 = new Table({
+    outer:$('#test1'),
+    headers:[
+        { name:'序号',width:50 },
+        { name:'姓名',width:200 },
+        { name:'年龄',width:200 },
+        { name:'得分',width:300 }
+    ],
+    renderTrs:[
+        (row,index,pagination)=> pagination.pageSize*(pagination.current-1)+index+1,
+        row=>row.name,
+        row=>row.age,
+        row=>row.score
+    ],
+    dataSource:this._getMockData(),
+    pagination:{
+        show:true,
+        total:56,
+        pageSize:5,
+        current:1,
+        onChange:({ current })=>{
+            setTimeout(()=>{
+                this.table1.setData({
+                    dataSource:this._getMockData(),
+                    pagination:{
+                        current,
+                        total:56
+                    }
+                });
+            },500);
+        }
+    }
+});
+
+_getMockData =()=> {
+    return new Array(5).fill(1).map(()=>{
+        return {
+            name:this._getRandomName(),
+            age:Math.ceil(Math.random()*20)+10,
+            score:Math.ceil(Math.random()*60)+40
+        }
+    })
+};</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 280px">
+                    <div class="flexbox aic" style="margin-bottom: 20px">
+                        <button class="btn btn-success btn-test btn-test1">展示loading</button>
+                        <button class="btn btn-success btn-test btn-test2">展示缺省</button>
+                    </div>
+                    <div id="test2" style="min-height: 200px"></div>
+                </div>
+                <div class="demo-title"><span>loading触发，缺省页的使用</span></div>
+                <div class="demo-des">
+                    通过设置dataSource为null/undefined/false，可以展示表格loading；<br>
+                    通过设置dataSource为[]，可以展示缺省页；<br>
+                    通过renderEmpty可以自定义缺省页。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.table2 = new Table({
+    outer:$('#test2'),
+    headers:[
+        { name:'序号',width:50 },
+        { name:'姓名',width:200 },
+        { name:'年龄',width:200 },
+        { name:'得分',width:300 }
+    ],
+    renderTrs:[
+        (row,index,pagination)=> pagination.pageSize*(pagination.current-1)+index+1,
+        row=>row.name,
+        row=>row.age,
+        row=>row.score
+    ],
+    dataSource:this._getMockData(),
+    pagination:{
+        show:true,
+        total:56,
+        pageSize:5,
+        current:1,
+        onChange:({ current })=>{
+            setTimeout(()=>{
+                this.table2.setData({
+                    dataSource:this._getMockData(),
+                    pagination:{
+                        current,
+                        total:56
+                    }
+                });
+            },500);
+        }
+    },
+    renderEmpty:()=>`&lt;div class="flexbox aic jcc" style="height: 100px;color: #999"&gt;&lt;i class="fa fa-warning" style="margin-right: 10px;font-size: 16px"&gt;&lt;/i&gt;我是自定义的缺省页&lt;/div&gt;`
+});
+
+const that = this;
+this.outer.on('click','.btn-test1', function () {
+    that.table2.setData({
+        dataSource:null
+    });
+    message({
+        type:'info',
+        msg:'开始请求数据'
+    });
+    setTimeout(()=>{
+        that.table2.setData({
+            dataSource:that._getMockData()
+        });
+        message({
+            type:'success',
+            msg:'请求数据成功'
+        });
+    },2000);
+}).on('click','.btn-test2',function () {
+    that.table2.setData({
+        dataSource:[]
+    });
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 280px">
+                    <div id="test3" style="min-height: 200px"></div>
+                </div>
+                <div class="demo-title"><span>特殊化某列表格样式，绑定点击事件，删除更新动画，缓存表格数据</span></div>
+                <div class="demo-des">
+                    renderTrs的元素除了可以直接返回函数外，也可以返回一个对象，对象包含renderTd函数，来自定义当前单元格；<br>
+                    通过绑定index，然后用getRowData方法获取当前行数据，实现点击事件与数据关联；<br>
+                    removeItem和updateItem来实现删除和更新动画；<br>
+                    storage参数，开始缓存数据，已展示过的页码将不再触发onChange事件，通过setData的conditionChange参数来清除缓存。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.table3 = new Table({
+    outer:$('#test3'),
+    headers:[
+        { name:'序号',width:50 },
+        { name:'姓名',width:200 },
+        { name:'年龄',width:250 },
+        { name:'得分',width:250 },
+        { name:'操作',width:150 }
+    ],
+    renderTrs:[
+        (row,index,pagination)=> pagination.pageSize*(pagination.current-1)+index+1,
+        row=>row.name,
+        row=>row.age,
+        {
+            renderTd:row=>`&lt;td style="color:#fff;${ row.score>=60?'background-color: #00b793':'background-color: #d00'} "&gt;${row.score}&lt;/td&gt;`
+        },
+        (row,index)=>{
+            return `&lt;a class="btn btn-link remove-item" data-index="${index}"&gt;删除&lt;/a&gt;&lt;a class="btn btn-link update-item" data-index="${index}"&gt;修改&lt;/a&gt;`
+        }
+    ],
+    dataSource:this._getMockData(),
+    pagination:{
+        show:true,
+        total:56,
+        pageSize:5,
+        current:1,
+        onChange:({ current })=>{
+            setTimeout(()=>{
+                this.table3.setData({
+                    dataSource:this._getMockData(),
+                    pagination:{
+                        current,
+                        total:56
+                    }
+                });
+            },500);
+        }
+    },
+    storage:true
+});
+
+this.floatModal = new FloatModal({ noInput:true });
+this.floatModal2 = new FloatModal({});
+
+const that = this;
+this.outer.on('click','.remove-item',function () {
+    const index = $(this).data('index');
+    const rowData = that.table3.getRowData(index);
+    that.floatModal.show({
+        title:'是否删除'+rowData.name+'的成绩?',
+        obj:$(this),
+        side:3,
+        fn:()=>{
+            that.floatModal.hide();
+            notification({
+                title:'删除成功',
+                msg:rowData.name+'的成绩成功删除'
+            });
+            that.table3.removeItem(index).then(()=>{
+                const _list = that.table3.getDataSource();
+                _list.splice(index,1);
+                _list.push(that._getMockData()[0]);
+                that.table3.setData({
+                    dataSource:_list,
+                    conditionChange:true
+                })
+            })
+        }
+    })
+}).on('click','.update-item',function () {
+    const index = $(this).data('index');
+    const rowData = that.table3.getRowData(index);
+    that.floatModal2.show({
+        title:'修改'+rowData.name+'的成绩',
+        placeholder:'输入新成绩',
+        obj:$(this),
+        side:3,
+        fn:(score)=>{
+            that.floatModal2.hide();
+            notification({
+                title:'修改成功',
+                msg:rowData.name+'的成绩修改为'+score
+            });
+            const _list = that.table3.getDataSource();
+            _list[index].score = score;
+            that.table3.setData({
+                dataSource:_list,
+                conditionChange:true
+            }).then(()=>{
+                that.table3.updateItem(index);
+            });
+        }
+    })
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 280px">
+                    <div id="test4" style="min-height: 200px"></div>
+                </div>
+                <div class="demo-title"><span>表格排序</span></div>
+                <div class="demo-des">
+                    在headers里定义sorter字段来开启排序。<br>
+                    排序变化时，触发回调函数sorter。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.table4 = new Table({
+    outer:$('#test4'),
+    headers:[
+        { name:'序号',width:50 },
+        { name:'姓名',width:300 },
+        { name:'年龄',width:200,
+            sorter:{
+                type:'age'
+            }
+        },
+        { name:'得分',width:200,
+            sorter:{
+                type:'score'
+            }
+        }
+    ],
+    renderTrs:[
+        (row,index,pagination)=> pagination.pageSize*(pagination.current-1)+index+1,
+        row=>row.name,
+        row=>row.age,
+        {
+            renderTd:row=>`&lt;td style="color:#fff;${ row.score>=60?'background-color: #00b793':'background-color: #d00'} "&gt;${row.score}&lt;/td&gt;`
+        },
+    ],
+    dataSource:this._getMockData(),
+    pagination:{
+        show:true,
+        total:56,
+        pageSize:5,
+        current:1,
+        onChange:({ current })=>{
+            setTimeout(()=>{
+                this.table4.setData({
+                    dataSource:this._getMockData(),
+                    pagination:{
+                        current,
+                        total:56
+                    }
+                });
+            },500);
+        }
+    },
+    sorter:({ sortName,type })=>{
+        //不排序
+        if(type === 0){
+            return this.table4.setData({
+                dataSource:this._getMockData()
+            })
+        }
+        const _list = this.table4.getDataSource();
+        //排序，-1倒序，1正序
+        _list.sort((a,b)=>{
+            return (b[sortName] - a[sortName])*type
+        });
+        this.table4.setData({
+            dataSource:_list
+        })
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/table<%=hash%>.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>carousel</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/carousel<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="carousel">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 400px">
+                    <div id="test1">
+                        <div class="c-section">section1</div>
+                        <div class="c-section">section2</div>
+                        <div class="c-section">section3</div>
+                        <div class="c-section">section4</div>
+                        <div class="c-section">section5</div>
+                        <div class="c-section">section6</div>
+                    </div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    自动播放的轮播。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new Carousel({
+    outer:$('#test1'),
+    autoChange:true,
+    hasSidePager:false
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 400px">
+                    <div id="test2">
+                        <div class="c-section">section1</div>
+                        <div class="c-section">section2</div>
+                        <div class="c-section">section3</div>
+                        <div class="c-section">section4</div>
+                        <div class="c-section">section5</div>
+                        <div class="c-section">section6</div>
+                    </div>
+                </div>
+                <div class="demo-title"><span>不自动切换</span></div>
+                <div class="demo-des">
+                    不自动切换，带侧边翻页的轮播。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new Carousel({
+    outer:$('#test2')
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/carousel<%=hash%>.js"></script>
+</body>
+</html>

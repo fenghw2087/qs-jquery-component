@@ -1,0 +1,48 @@
+.ys-checkbox {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  position: relative;
+  margin-right: 5px;
+}
+.ys-checkbox > input {
+  height: 0;
+  width: 0;
+  display: inline-block;
+  position: relative;
+  left: 7px;
+  top: 3px;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  opacity: 0;
+}
+.ys-checkbox > label {
+  cursor: pointer;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  left: 0;
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 2px;
+  margin: 0;
+}
+.ys-checkbox > input + label::before {
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 5px;
+  display: inline-block;
+  background: transparent;
+  top: 3px;
+  left: 2px;
+  border: 3px solid;
+  border-top: none;
+  border-right: none;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.ys-checkbox > input:checked + label::before {
+  opacity: 1;
+}

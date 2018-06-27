@@ -1,0 +1,61 @@
+@import "../../less/base";
+
+.ys-message-c {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.65);
+    position: fixed;
+    z-index: 20010;
+    width: 100%;
+    top: 16px;
+    left: 0;
+    pointer-events: none;
+}
+.ys-message-item-c {
+    margin-bottom: 10px;
+    text-align: center;
+    transition: all .3s;
+    opacity: 0;
+    margin-top: -20px;
+}
+.ys-message-item-c.active {
+    opacity: 1;
+    margin-top: 0;
+}
+.ys-message-item {
+    padding: 12px 20px;
+    border-radius: 4px;
+    background: #fff;
+    display: inline-block;
+    pointer-events: all;
+    font-size: 14px;
+    border: 1px solid;
+}
+.ys-message-item > i {
+    font-size: 16px;
+    margin-right: 10px;
+}
+.ys-message-item-success {
+    background-color: screen(@successColor,#ddd);
+    border-color: fade(@successColor,20%);
+    color: @successColor;
+    box-shadow: 0 4px 12px fade(@successColor,40%);
+}
+.ys-message-item-error {
+    background-color: screen(@errorColor,#ddd);
+    border-color: fade(@errorColor,20%);
+    color: @errorColor;
+    box-shadow: 0 4px 12px fade(@errorColor,40%);
+}
+.ys-message-item-warning {
+    background-color: screen(@warningColor,#ddd);
+    border-color: fade(@warningColor,20%);
+    color: @warningColor;
+    box-shadow: 0 4px 12px fade(@warningColor,40%);
+}
+.ys-message-item-info {
+    background-color: screen(@infoColor,#ddd);
+    border-color: fade(@infoColor,20%);
+    color: @infoColor;
+    box-shadow: 0 4px 12px fade(@infoColor,40%);
+}

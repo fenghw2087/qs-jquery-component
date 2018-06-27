@@ -1,0 +1,328 @@
+@import '../../../../common/less/base';
+
+.main-ent-name {
+    line-height: 30px;
+    height: 30px;
+    color: #333;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+#entTagC {
+    padding: 0 20px;
+}
+.exist-tag-i {
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    padding: 0 10px;
+    line-height: 24px;
+    background-color: @mainColor;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 12px;
+}
+.condition-i-c {
+    display: flex;
+    font-size: 12px;
+    .c-i-t {
+        color: #999;
+        white-space: nowrap;
+    }
+    .c-i-c {
+        color: #333;
+        flex: 1;
+    }
+}
+
+.edit-bar-c {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    &>.btn {
+        margin-right: 10px;
+        display: none;
+        &:last-child {
+            margin-right: 0;
+            display: block;
+        }
+    }
+    &.edit-ing {
+        &>.btn {
+            margin-right: 10px;
+            display: block;
+            &:last-child {
+                margin-right: 0;
+                display: none;
+            }
+        }
+    }
+}
+
+.edit-btn {
+    &> .iconfont {
+        margin-right: 5px;
+    }
+}
+
+.content-container {
+    position: relative;
+    &.active {
+        z-index: 9999;
+    }
+}
+
+.edit-model {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.3);
+    z-index: 9998;
+}
+
+.ys-couple-menu-c {
+    .ys-couple-menu-btn{
+        border: none;
+    }
+    &.ys-open {
+        .ys-couple-menu-btn{
+            box-shadow: none;
+        }
+    }
+}
+
+.checkbox-item {
+    color: #999;
+    margin-right: 10px;
+}
+.checkbox-item > .fa {
+    display: none;
+}
+.checkbox-item:not(.active) > .fa-square-o {
+    display: inline-block;
+}
+.checkbox-item.active > .fa-check-square-o {
+    display: inline-block;
+    color: @mainColor;
+}
+
+.radio-item {
+    color: #999;
+    margin-right: 10px;
+}
+.radio-item > .fa {
+    display: none;
+}
+.radio-item:not(.active) > .fa-circle-o {
+    display: inline-block;
+}
+.radio-item.active > .fa-dot-circle-o {
+    display: inline-block;
+    color: @mainColor;
+}
+
+.ys-ng-radio {
+    margin-right: 10px;
+    color: #999;
+}
+.ys-ng-radio.active {
+    color: @mainColor;
+}
+.ys-ng-radio > .fa {
+    margin-right: 3px;
+}
+.ys-ng-radio:not(.active) > .fa-dot-circle-o,
+.ys-ng-radio.active > .fa-circle-o {
+    display: none;
+}
+.ys-ng-radio.active > .fa-dot-circle-o,
+.ys-ng-radio:not(.active) > .fa-circle-o {
+    display: inline-block;
+}
+
+.add-new-person {
+    color: @mainColor;
+    border: 1px dashed;
+    line-height: 28px;
+    margin: 20px 0;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 1px 1px 5px fade(@mainColor,30%);
+    }
+    &>.iconfont {
+        margin-right: 5px;
+    }
+}
+
+.visit-list-c {
+    padding: 10px 0;
+}
+
+.visit-list-item {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    &:last-child {
+        border-bottom: none;
+    }
+    .visit-l-d {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #5db1ff;
+        width: 70px;
+        height: 70px;
+        border-radius: 5px;
+        color: #fff;
+        .visit-l-d-d {
+            font-size: 30px;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        .visit-l-d-sy {
+            font-size: 14px;
+            line-height: 1;
+        }
+    }
+    .visit-l-m {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        .visit-l-c {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            color: #333;
+            font-size: 14px;
+        }
+        .visit-l-p {
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+            color: #999;
+        }
+    }
+    .visit-l-imgs {
+        position: relative;
+        height: 70px;
+        width: 100px;
+        &>img {
+            width: 100%;
+            height: 100%;
+        }
+        &>.no-img {
+            height: 100%;
+            width: 100%;
+            line-height: 70px;
+            color: #ccc;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        &>.imgs-tool {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.4);
+            text-align: center;
+            line-height: 70px;
+            font-size: 20px;
+            color: #eee;
+        }
+    }
+}
+
+.edit-td {
+    position: relative;
+    width: 100%;
+}
+
+.show-more-img {
+    color: @mainColor;
+    cursor: pointer;
+    &:hover {
+        color: overlay(@mainColor,#333);
+    }
+    &> .fa {
+        font-size: 18px;
+    }
+}
+
+.more-info {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 18px;
+    color: @mainColor;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    text-align: right;
+    &:hover {
+        .more-info-tool-c {
+            display: block;
+        }
+    }
+    .more-info-tool-c {
+        position: absolute;
+        display: none;
+        right: 0;
+        top: 100%;
+        width: 100px;
+        text-align: center;
+        background-color: #fff;
+        font-size: 13px;
+        box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+        padding: 5px 0;
+        &>div {
+            line-height: 30px;
+            color: #999;
+            cursor: pointer;
+            &:hover {
+                color: #666;
+            }
+        }
+    }
+}
+
+.next-visit {
+    position: relative;
+}
+.next-visit.active::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    right: 2px;
+    top: 5px;
+}
+.next-visit > span {
+    line-height: 32px;
+    padding: 0 10px;
+    display: inline-block;
+}
+.next-visit-c {
+    position: absolute;
+    display: none;
+    top: 100%;
+    right: 0;
+    width: 220px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.5);
+    z-index: 99;
+    padding: 10px;
+    font-size: 12px;
+}
+.next-visit.active:hover .next-visit-c {
+    display: block;
+}

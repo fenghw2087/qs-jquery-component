@@ -1,0 +1,49 @@
+export const propsList = [
+    {
+        param:'obj',
+        description:'外部容器，一个长度的jqueryDom',
+        type:'jQueryObject',
+        default:''
+    },{
+        param:'renderLi',
+        description:'选项渲染回调',
+        type:'Function',
+        default:'row=>row'
+    },{
+        param:'list',
+        description:'数据数组',
+        type:'Array',
+        default:'[]'
+    },{
+        param:'placeholder',
+        description:'未选择时的占位符',
+        type:'String',
+        default:'不限'
+    },{
+        param:'checkIds',
+        description:'默认选中的下标组',
+        type:'String',
+        default:''
+    },{
+        param:'onSelectChange',
+        description:'确认选中后触发回调',
+        type:'Function',
+        default:'()=>{}'
+    }
+];
+
+export const apiList = [
+    {
+        funcName:'renderList',
+        description:'动态塞选项函数',
+        params:'list: Array'
+    },{
+        funcName:'reset',
+        description:'重置',
+        params:''
+    },{
+        funcName:'getChecked',
+        description:'获取选中项',
+        params:''
+    }
+];

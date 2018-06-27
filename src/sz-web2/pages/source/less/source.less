@@ -1,0 +1,122 @@
+@import '../../../../common/less/base';
+
+#dateSelect {
+    position: absolute;
+    right: 30px;
+    z-index: 100;
+}
+.input-group-addon {
+    cursor: pointer;
+    &>.fa {
+        color: overlay(@mainColor,#999);
+    }
+}
+.ys-progress-outer {
+    height: 8px;
+    width: 120px;
+    position: relative;
+    background-color: #f2f2f2;
+    border-radius: 2px;
+}
+.ys-progress-bar {
+    height: 100%;
+    position: absolute;
+    border-radius: 2px;
+    left: 0;
+    top: 0;
+    background-color: @mainColor;
+}
+.ys-progress-num {
+    margin: 0 5px;
+    color: #ccc;
+}
+.ys-progress-num.active {
+    color: @mainColor;
+}
+.ys-progress-fail {
+    margin: 0 5px;
+    color: @mainColor
+}
+.static-row-table .btn-link {
+    color: @mainColor !important;
+    padding: 0 5px;
+}
+.static-row-table tbody tr:hover {
+    background-color: inherit !important;
+}
+#monthListTable .btn-link {
+    color: @mainColor;
+    padding: 0 3px;
+}
+.btn-delete[disabled]{
+    color:gray!important;
+}
+.div-table {
+    max-height: 100%;
+    overflow: auto;
+    position: relative;
+    padding-top: 30px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.ys-table-tr {
+    line-height: 30px;
+    font-size: 12px;
+    width: 100%;
+}
+.ys-table-th {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.ys-table-td {
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.ys-table-th:not(:first-child),.ys-table-td:not(:first-child) {
+    border-left: none;
+}
+.ys-table-thead {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.rel-td-content {
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#excelTable .fa-random {
+    cursor: pointer;
+    width: 2em;
+    line-height: 2;
+}
+.break-rel-img {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.common-table td>input {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    color: #333;
+}
+
+.btn.ys-dropdown-btn {
+    border: none !important;
+}
+.btn.ys-dropdown-btn:focus {
+    outline: none !important;
+}
+.ys-open > .btn.ys-dropdown-btn {
+    border-color: transparent !important;
+    box-shadow: none !important;
+}

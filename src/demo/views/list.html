@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/list<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="listPageOuter">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 280px">
+                    项目进度表
+                    <div id="test1" style="min-height: 200px;margin-top: 20px"></div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用，大部分用法与table一致。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>
+_getMorkListData =(current)=> {
+    return new Array(5).fill(1).map((v,i)=>{
+        return {
+            name:'项目项目'+current+(i+1),
+            qz:5+Math.ceil(Math.random()*15),
+            result:70+Math.ceil(Math.random()*30)
+        }
+    });
+};
+
+_getMorkList =(current,type)=> {
+    const list = this._getMorkListData(current);
+    this.list.setData({
+        dataSource:list,
+        pagination:{
+            current,
+            total:56
+        },
+        conditionChange:!!type
+    })
+};
+
+this.list = new List({
+    outer:$('#test1'),
+    renderTr:(row,index)=>{
+        return `&lt;div class="item-outer flexbox aic"&gt;...&lt;/div&gt;`
+    },
+    pagination:{
+        show:true,
+        pageSize:5,
+        onChange:({current})=>{
+            this._getMorkList(current);
+        }
+    },
+    storage:true
+});
+
+this.floatModal = new FloatModal({});
+
+const that = this;
+this.outer.on('click','.btn-test1', function () {
+    const index = $(this).data('index');
+    const rowData = that.list.getRowData(index);
+    that.floatModal.show({
+        title:'修改完成度',
+        obj:$(this),
+        side:3,
+        placeholder:'输入完成度0-100',
+        fn:(value)=>{
+            if(value<0 || value>100){
+                that.floatModal.showMsg('范围不对')
+            }else {
+                that.floatModal.hide();
+                const dataSource = that.list.getDataSource();
+                dataSource[index].result = value;
+                that.list.setData({
+                    dataSource
+                }).then(()=>{
+                    that.list.updateItem(index)
+                })
+            }
+        }
+    });
+}).on('click','.btn-test2', function () {
+    const index = $(this).data('index');
+    const rowData = that.list.getRowData(index);
+    that.list.removeItem(index).then(()=>{
+        that._getMorkList(that.list.getPagination().current,'delete');
+        notification({
+            title:'删除成功',
+            msg:`${rowData.name}删除成功！`
+        });
+    })
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/list<%=hash%>.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+@import "../../less/base";
+
+.float-modal-outer {
+    position: absolute;
+    width: 170px;
+    background-color: #fefefe;
+    box-shadow: 0 0 10px #666;
+    z-index: 29999;
+    top: 0;
+    left: 0;
+    display: none;
+    padding: 5px;
+}
+.float-modal-outer::before,.float-modal-outer::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+.float-modal-outer.float-modal-top::before {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ccc;
+    top: 100%;
+    left: 10px;
+}
+.float-modal-outer.float-modal-top::after {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fefefe;
+    top: 100%;
+    left: 11px;
+}
+.float-modal-outer.float-modal-right::before {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #ccc;
+    top: 50%;
+    margin-top: -10px;
+    left: -10px;
+}
+.float-modal-outer.float-modal-right::after {
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #fefefe;
+    top: 50%;
+    margin-top: -8px;
+    left: -8px;
+}
+.float-modal-outer.float-modal-bottom::before {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ccc;
+    top: -10px;
+    right: 10px;
+}
+.float-modal-outer.float-modal-bottom::after {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fefefe;
+    top: -8px;
+    right: 12px;
+}
+.float-modal-outer.float-modal-left::before {
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #ccc;
+    top: 50%;
+    margin-top: -10px;
+    right: -10px;
+}
+.float-modal-outer.float-modal-left::after {
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #fefefe;
+    top: 50%;
+    margin-top: -8px;
+    right: -7px;
+}
+.rel-confirm {
+    background-color: @mainColor;
+    color: #fff;
+}
+.rel-confirm:hover,
+.rel-confirm:focus,
+.rel-confirm:active{
+    color: #fff;
+    background-color: screen(@mainColor,#333);
+}

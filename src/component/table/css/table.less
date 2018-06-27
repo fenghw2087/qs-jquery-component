@@ -1,0 +1,127 @@
+@import "../../less/base";
+
+.ys-table {
+    font-size: @tableFontSize;
+    width: 100%;
+    max-width: 100%;
+    color: #333;
+    table-layout: fixed;
+    overflow-x: hidden;
+}
+.ys-table thead tr {
+    background-color: @tHeadColor;
+}
+.ys-table tbody tr {
+    transition: all ease-in-out .3s;
+    border-bottom: 1px solid #ddd;
+}
+.ys-table tbody tr:hover {
+    background-color: overlay(@tHeadColor,#222);
+    color: #444;
+}
+.tr-removing-center {
+    background-color: screen(@errorColor,#bbb);
+    transition: all ease-in-out .3s;
+    transform: rotateY(0);
+}
+.tr-removing-left {
+    background-color: screen(@errorColor,#bbb);
+    transition: all ease-in-out .3s;
+    transform: translate(0,0);
+}
+.tr-updating {
+    transition: all ease-in-out .3s;
+}
+.tr-updated {
+    background-color: screen(@successColor,#bbb) !important;
+}
+.tr-removed-center {
+    transform: rotateY(90deg);
+}
+.tr-removed-left {
+    transform: translate(-100%,0);
+}
+.ys-table th {
+    text-align: center;
+    color: #999;
+    font-weight: normal;
+    line-height: 20px;
+    padding: 10px 5px;
+}
+.ys-table td {
+    text-align: center;
+    line-height: 20px;
+    padding: 10px 5px;
+}
+.ys-paginar {
+    margin: 10px 0;
+}
+.single-tr td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.single-tr tr:hover td {
+    white-space: normal;
+    text-overflow: clip;
+    overflow: visible;
+}
+.ys-table-loading {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+.ys-table-no-msg {
+    background: url("../../../images/table-no-msg.png") no-repeat scroll center top;
+    padding-top: 200px;
+    text-align: center;
+    color: #999;
+}
+.rel {
+    position: relative;
+
+}
+.table-sorter {
+    position: relative;
+    display: inline-block;
+    padding: 0 5px;
+    cursor: pointer;
+    width: 18px;
+    height: 14px;
+    vertical-align: text-bottom;
+    text-align: center;
+    color: #ccc;
+}
+.table-sorter > .fa-sort-up {
+    position: absolute;
+    left: 5px;
+}
+.table-sorter > .fa-sort-down {
+    position: absolute;
+    left: 5px;
+}
+.table-sorter.up > .fa-sort-up {
+    color: #666;
+}
+.table-sorter.down > .fa-sort-down {
+    color: #666;
+}
+.ys-table-loading-span {
+    margin-right: 10px;
+    display: inline-block;
+    height: 21px;
+}
+.ys-table td > .btn-link {
+    padding: 0;
+    margin-left: 5px;
+}
+.ys-table td > .btn-link:first-child {
+    margin-left: 0;
+}

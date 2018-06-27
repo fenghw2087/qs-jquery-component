@@ -1,0 +1,43 @@
+.ys-tooltip {
+    position: absolute;
+    z-index: 9000;
+    display: inline-block;
+    max-width: 180px;
+    min-height: 32px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #fff;
+    text-align: left;
+    background-color: rgba(97,97,97,.9);
+    border-radius: 2px;
+    opacity: 0;
+    -webkit-transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    -webkit-transition-duration: .15s;
+    transition-duration: .15s;
+    -webkit-transition-property: opacity,-webkit-transform;
+    transition-property: opacity,-webkit-transform;
+    transition-property: opacity,transform;
+    transition-property: opacity,transform,-webkit-transform;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    will-change: opacity,transform
+}
+@media (min-width: 1024px) {
+    .ys-tooltip {
+        max-width:200px;
+        min-height: 24px;
+        padding: 4px 8px;
+        font-size: 12px;
+        line-height: 18px
+    }
+}
+.ys-tooltip-open {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1)
+}

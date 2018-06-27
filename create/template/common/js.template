@@ -1,0 +1,32 @@
+/**
+**create by 2087, ${TIME}
+**/
+
+import $ from 'jquery';
+
+import './css/${NAME}.css';
+
+class ${NAME-U}Page {
+    constructor() {
+        this.outer = $('#${NAME}PageOuter');
+
+        this._init();
+    }
+
+    init = () => {
+
+    };
+
+    _bindEvent = () => {
+        const that = this;
+        this.outer.on('click', function () {
+
+        })
+    };
+
+    _init = () => {
+        this._bindEvent();
+    }
+}
+
+new ${NAME-U}Page().init();

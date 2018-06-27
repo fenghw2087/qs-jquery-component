@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>coolDownBtn</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/coolDownBtn<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="coolDownBtnPageOuter">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <button id="test1" class="btn btn-success">获取验证码</button>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.cdBtn = new CoolDownBtn({
+    obj:$('#test1'),
+    text:'获取验证码',
+    disableStyle:{
+        backgroundColor:'#aaa'
+    },
+    onClick:()=>{
+        this.cdBtn.startCD();
+        message({
+            type:'success',
+            msg:'发送验证码成功'
+        })
+    },
+    coolDownFn:()=>{
+        message({
+            type:'info',
+            msg:'冷却完成'
+        })
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/coolDownBtn<%=hash%>.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+@import "../../less/base";
+
+.ys-page-pagination {
+    width: 100%;
+    text-align: right;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 5px 0;
+    color: #333;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.ys-page-pos-center {
+    justify-content: center;
+}
+.ys-page-pos-left {
+    justify-content: flex-start;
+}
+.ys-page-prev,.ys-page-next {
+    width: 20px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.ys-page-prev.disabled,.ys-page-next.disabled {
+    cursor: default;
+    color: #ccc;
+}
+.ys-page-prev:not(.disabled):hover,.ys-page-next:not(.disabled):hover {
+    opacity: .7;
+}
+.ys-page-prev > i,.ys-page-next > i {
+    font-size: 18px;
+}
+.ys-page-pager {
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 5px;
+}
+.ys-page-pager.current {
+    border-radius: 10px;
+    background-color: @mainColor;
+    color: #fff;
+    cursor: default;
+}
+.ys-page-pager:not(.current):hover {
+    text-decoration: underline;
+    opacity: .7;
+}
+.ys-page-go-input {
+    display: inline-block;
+    width: 35px;
+    padding: 0;
+    text-align: center;
+    height: 20px;
+    margin: 0 5px;
+}
+.ys-page-go {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.ys-page-loading {
+    display: none;
+    color: @mainColor;
+}

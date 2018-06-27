@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dropDown</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/dropDown<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="dropDown">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 100px">
+                    <div id="test1" style="width: 120px"></div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new Dropdown({
+    obj:$('#test1'),
+    list:['选项一','选项二','选项三'],
+    onSelectChange:(current)=>{
+        message({
+            type:'success',
+            msg:'当前选中 '+current
+        })
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 100px">
+                    <div id="test2" style="width: 120px"></div>
+                </div>
+                <div class="demo-title"><span>拥有二级列表</span></div>
+                <div class="demo-des">
+                    拥有二级列表，二级列表数据放在一级列表数据下的children字段，演示placeholder的作用，演示hasReset的作用，演示renderLi,renderSecLi的用法。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new Dropdown({
+    obj:$('#test2'),
+    list:[{ name:'不限',id:'' },...new Array(10).join(',').split(',').map((v,i)=>{
+        return {
+            name:'一级列表'+(i+1),
+            id:i,
+            children:new Array(5).join(',').split(',').map((v2,i2)=>{
+                return {
+                    name:'二级列表'+i+'-'+i2,
+                    id:i2
+                }
+            })
+        }
+    })],
+    renderLi:row=>row.name,
+    renderSecLi:row=>row.name,
+    onSelectChange:(current)=>{
+        if(current){
+            message({
+                type:'success',
+                msg: '当前选中 '+ current.name
+            })
+        }else {
+            message({
+                type:'success',
+                msg: '列表重置'
+            })
+        }
+    },
+    placeholder:'选择列表',
+    hasReset:true,
+    hasChildren:true
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 100px">
+                    <div class="flexbox aic">
+                        <div id="test3" style="width: 120px"></div>
+                        <button class="btn btn-success btn-test btn-test1">添加选项</button>
+                        <button class="btn btn-success btn-test btn-test2">清空选项</button>
+                        <button class="btn btn-success btn-test btn-test3">选中第三项</button>
+                        <button class="btn btn-success btn-test btn-test4">设置当前显示文字</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>动态设置下拉选项</span></div>
+                <div class="demo-des">
+                    动态设置下拉选项，使用组件提供的renderList方法，如传入list为空，下拉选项将置空；<br>
+                    使用setData选中需要的选项，如没有选项或者传入的下标不在范围内，选项将重置为未选中状态；<br>
+                    如仅想修改下拉当前展示的文字，可以调用setValue进行设置，该方法试用于不知道选项或没有选项时的临时显示。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.drop3 = new Dropdown({
+    obj:$('#test3'),
+    renderLi:row=>row.name,
+    onSelectChange:(current)=>{
+
+    }
+});
+
+const that = this;
+//添加选项
+const list = new Array(5).join(',').split(',').map((v,i)=>{
+    return {
+        name:'选项'+(i+1),
+        id:i+1
+    }
+});
+that.drop3.renderList(list);
+message({
+    type:'success',
+    msg:'设置选项成功'
+})
+
+//清空选项
+that.drop3.renderList([]);
+message({
+    type:'success',
+    msg:'清空选项成功'
+})
+
+//选中某一项
+if(!that.drop3.getList().length){
+    message({
+        type:'warning',
+        msg:'请先设置选项，没有选项时，setData方法将重置下拉为未选中状态'
+    })
+}
+that.drop3.setData(2);
+
+//设置显示的文字
+that.drop3.setValue('无关的文字');
+message({
+    type:'success',
+    msg:'设置成功，该显示与选项无任何关联'
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 100px">
+                    <div class="flexbox aic">
+                        <div id="test4" style="width: 120px"></div>
+                        <button class="btn btn-success btn-test btn-test5">启用下拉</button>
+                        <button class="btn btn-success btn-test btn-test6">禁用下拉</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>向上弹出列表，禁用</span></div>
+                <div class="demo-des">
+                    设置参数 dropup 为true实现向上弹出列表，通过setDisabled方法禁用/启用下拉。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.drop4 = new Dropdown({
+    obj:$('#test4'),
+    list:['选项一','选项二','选项三'],
+    onSelectChange:(current)=>{
+
+    },
+    dropup:true,
+    disabled:true
+});
+
+const that = this;
+//启用下拉
+that.drop4.setDisabled(false);
+message({
+    type:'success',
+    msg:'启用下拉'
+})
+
+//禁用下拉
+that.drop4.setDisabled(true);
+message({
+    type:'success',
+    msg:'禁用下拉'
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 100px">
+                    <div class="flexbox aic">
+                        <div id="test5" style="width: 120px"></div>
+                        <button class="btn btn-success btn-test7 btn-test">弹出下拉列表</button>
+                        <button class="btn btn-success btn-test8 btn-test">关闭下拉列表</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>鼠标划过弹出，设置下拉列表样式，js控制列表弹出</span></div>
+                <div class="demo-des">
+                    通过设置autoShow为true,设置鼠标划过弹出下拉选项；<br>
+                    通过设置menuStyle，来设置下拉列表的样式，通常用于选项过多时，设置列表最大高度展示滚动条；<br>
+                    通过调用toggleDrop方法，弹出或收起下拉列表。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.dorp5 = new Dropdown({
+    obj:$('#test5'),
+    list:new Array(20).join(',').split(',').map((v,i)=>{
+        return '选项'+(i+1)
+    }),
+    onSelectChange:(current)=>{
+
+    },
+    menuStyle:'max-height:250px;overflow-y:auto',
+    autoShow:true
+});
+
+const that = this;
+//弹出下拉
+that.drop5.toggleDrop('open');
+
+//收起下拉
+that.drop5.toggleDrop('close');</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/dropDown<%=hash%>.js"></script>
+</body>
+</html>

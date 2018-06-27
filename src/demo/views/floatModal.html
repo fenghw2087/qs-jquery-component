@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>floatModal</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/floatModal<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="floatModal">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox aic">
+                        <button class="btn btn-success btn-test btn-test4">从左弹出</button>
+                        <button class="btn btn-success btn-test btn-test1">从上弹出</button>
+                        <button class="btn btn-success btn-test btn-test3">从下弹出</button>
+                        <button class="btn btn-success btn-test btn-test2">从右弹出</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用，4中方向。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.floatModal2 = new FloatModal({ noInput:true });
+const that = this;
+that.floatModal2.show({
+    title:'向上的弹框',
+    obj:$(this),
+    side:1,
+    fn:()=>{
+        that.floatModal2.hide();
+        message({
+            type:'success',
+            msg:'确认向上的弹框'
+        })
+    }
+})
+
+that.floatModal2.show({
+    title:'向右的弹框',
+    obj:$(this),
+    side:2,
+    fn:()=>{
+        that.floatModal2.hide();
+        message({
+            type:'success',
+            msg:'确认向右的弹框'
+        })
+    }
+})
+
+that.floatModal2.show({
+    title:'向下的弹框',
+    obj:$(this),
+    side:3,
+    fn:()=>{
+        that.floatModal2.hide();
+        message({
+            type:'success',
+            msg:'确认向下的弹框'
+        })
+    }
+})
+
+that.floatModal2.show({
+    title:'向左的弹框',
+    obj:$(this),
+    side:4,
+    fn:()=>{
+        that.floatModal2.hide();
+        message({
+            type:'success',
+            msg:'确认向左的弹框'
+        })
+    }
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox aic">
+                        <button class="btn btn-success btn-test btn-test5">带输入框的弹框</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>带输入框的弹框</span></div>
+                <div class="demo-des">
+                    用来要求用户输入一个信息来验证。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.floatModal2 = new FloatModal({});
+const k = 4234;
+that.floatModal.show({
+    title:'请输入'+k+'进行确认',
+    obj:$(this),
+    side:1,
+    placeholder:'请输入验证数字',
+    fn:(value)=>{
+        if(value-0 === k){
+            message({
+                type:'success',
+                msg:'验证正确'
+            });
+            that.floatModal.hide();
+        }else {
+            that.floatModal.showMsg('输入不正确')
+        }
+    }
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/floatModal<%=hash%>.js"></script>
+</body>
+</html>

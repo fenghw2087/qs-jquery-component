@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>notification</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/notification<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="notification">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox">
+                        <button class="btn btn-success btn-test btn-test1">成功类通知</button>
+                        <button class="btn btn-info btn-test btn-test2">消息类通知</button>
+                        <button class="btn btn-warning btn-test btn-test3">警告类通知</button>
+                        <button class="btn btn-danger btn-test btn-test4">错误类通知</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用，从右上角弹出，默认显示5s。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>//成功通知
+notification({
+    type:'success',
+    title:'成功提示',
+    msg:'成功内容'
+})
+
+//信息通知
+notification({
+    type:'info',
+    title:'信息提示',
+    msg:'信息内容'
+})
+
+//警告通知
+notification({
+    type:'warning',
+    title:'警告提示',
+    msg:'警告内容'
+})
+
+//错误通知
+notification({
+    type:'error',
+    title:'错误提示',
+    msg:'错误内容'
+}))</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox">
+                        <button class="btn btn-success btn-test btn-test5">不自动消失的通知</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>不自动消失的通知</span></div>
+                <div class="demo-des">
+                    通过设置time=0，使通知不会自动消失，用户可点击X进行关闭。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                        <pre class="javascript"><code>notification({
+    type:'success',
+    title:'成功提示',
+    msg:'我不会自动消失',
+    time:0
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox">
+                        <button class="btn btn-success btn-test btn-test6">自定义按钮通知</button>
+                    </div>
+                </div>
+                <div class="demo-title"><span>自定义按钮通知</span></div>
+                <div class="demo-des">
+                    当需要在通知框内有额外操作时，可使用confirmBtn，可自定义按钮上的事件，此回调函数有一个参数，该参数是一个方法，用来关闭通知，如果需要点击后关闭通知，在onClick回调中执行该方案；closeBtn不允许自定义事件，该按钮作用等同于X。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                        <pre class="javascript"><code>notification({
+    title:'成功提示',
+    msg:'请点击下方按钮',
+    time:0,
+    confirmBtn:{
+        show:true,
+        text:'点我确认',
+        onClick:( close )=>{
+            message({
+                type:'success',
+                msg:'可以在这里执行自定义事件'
+            });
+            //关闭通知
+            close();
+        }
+    },
+    closeBtn:{
+        show:true,
+        text:'点我关闭'
+    }
+})</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/notification<%=hash%>.js"></script>
+</body>
+</html>

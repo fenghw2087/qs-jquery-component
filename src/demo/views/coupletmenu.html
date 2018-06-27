@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>coupletmenu</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/coupletmenu<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="coupletmenuPageOuter">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div id="test1" style="width: 120px"></div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用。这是一个比较难用的组件，主要体现在对renderNext和renderResult的使用上。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.couplet1 = new CoupletMenu({
+    obj:$('#test1'),
+    placeholder:'请选择',
+    list:new Array(8).fill(1).map((v,i)=>{
+        return {
+            name:'选项'+(i+1),
+            id:i+1,
+            children:(()=>{
+                return new Array(12).fill(1).map((v2,i2)=>{
+                    return {
+                        name:'选项'+(i+1)+'-'+(i2+1),
+                        id:(i+1)+'-'+(i2+1)
+                    }
+                })
+            })()
+        }
+    }),
+    renderLi:row=>row.name,
+    renderNext:(checks,current)=>{
+        return new window.Promise(res=>{
+            res(current.children)
+        })
+    },
+    renderResult:(checks,list)=>{
+        const row = checks.reduce((o,v)=>{
+            o = o.children[v];
+            return o;
+        },{ children:list });
+        return row.name
+    },
+    onSelectChange:(checks,list)=>{
+        const row = checks.reduce((o,v)=>{
+            o = o.children[v];
+            return o;
+        },{ children:list });
+        message({
+            type:'info',
+            msg:'当前选中：'+row.name
+        })
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div id="test2" style="display: inline-block"></div>
+                </div>
+                <div class="demo-title"><span>省市区级联选择</span></div>
+                <div class="demo-des">
+                    演示一个省市区级联选择，数据调用高德接口。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.couplet2 = new CoupletMenu({
+    obj:$('#test2'),
+    placeholder:'选择地区',
+    titles:['选择省','选择市','选择区'],
+    hasNext:row=>row.level === 'province' || row.level === 'city',
+    list:[],
+    renderNext:(checks,current)=>{
+        return new window.Promise(res=>{
+            if(current.children) return res(current.children);
+            this.getPlaces(current.name).then(data=>{
+                if(data.status === '1'){
+                    res(data.districts[0].districts);
+                }
+            })
+        })
+    },
+    renderResult:(checks,list)=>{
+        const province = checks[0] !== undefined?list[checks[0]]:{};
+        const city = checks[1] !== undefined?province.children[checks[1]]:{};
+        const area = checks[2] !== undefined?city.children[checks[2]]:{};
+        return [province.name,city.name,area.name].filter(v=>v).join('/');
+    },
+    onSelectChange:(checks,list)=>{
+        const province = checks[0] !== undefined?list[checks[0]]:{};
+        const city = checks[1] !== undefined?province.children[checks[1]]:{};
+        const area = checks[2] !== undefined?city.children[checks[2]]:{};
+        message({
+            type:'success',
+            msg:`当前选中：${[province.name,city.name,area.name].filter(v=>v).join('/')}`
+        })
+    }
+});
+
+getPlaces =(keywords)=>{
+    return doRequest({
+        url:'http://restapi.amap.com/v3/config/district?key=48a5cede312f0221ecc0e70b1b6dba3f&subdistrict=1',
+        data:{
+            keywords
+        }
+    });
+};
+//动态塞第一级数据
+this.getPlaces('中国').then(data=>{
+    if(data.status === '1'){
+        this.couplet2.renderList(data.districts[0].districts);
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/coupletmenu<%=hash%>.js"></script>
+</body>
+</html>

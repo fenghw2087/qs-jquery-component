@@ -1,0 +1,43 @@
+@import "../../less/base";
+
+.ys-auto-complete-outer {
+    position: absolute;
+    z-index: 11099;
+    max-height: 300px;
+    overflow: auto;
+    background-color: #fff;
+    padding: 5px 0;
+    box-shadow: 1px 1px 8px rgba(0,0,0,.3);
+    display: none;
+}
+.ys-auto-complete-item {
+    line-height: 18px;
+    font-size: 14px;
+    padding: 4px 15px;
+    margin-bottom: 1px;
+}
+.ys-auto-complete-item > a {
+    color: #666;
+}
+.ys-auto-complete-item:hover,
+.ys-auto-complete-item.active {
+    background-color: #eee;
+}
+.ys-auto-complete-item:hover > a,
+.ys-auto-complete-item:active > a{
+    color: #333;
+}
+.ys-auto-complete-empty {
+    color: #999;
+    padding: 0 15px;
+}
+.ys-auto-complete-loading {
+    line-height: 40px;
+    padding: 0 20px;
+    color: #999;
+    display: flex;
+    align-items: center;
+    svg {
+        margin-right: 10px;
+    }
+}

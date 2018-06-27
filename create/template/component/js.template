@@ -1,0 +1,27 @@
+/**
+**create by 2087, ${TIME}
+**/
+
+import $ from 'jquery';
+
+import './less/${NAME}.less';
+
+export default class ${NAME-U} {
+    constructor() {
+
+        this._init();
+    }
+
+    _bindEvent = () => {
+
+    };
+
+    _renderHtml =()=> {
+
+    };
+
+    _init = () => {
+        this._renderHtml();
+        this._bindEvent();
+    }
+}

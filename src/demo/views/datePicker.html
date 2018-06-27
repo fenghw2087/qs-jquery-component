@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datePicker</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/datePicker<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="datePicker">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div style="width: 140px"><input type="text" placeholder="选择日期" id="test1" class="form-control" /></div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用，尝试直接在input中输入日期。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new DatePicker({
+    input:$('#test1'),
+    onDateChange:(date)=>{
+        message({
+            type:'success',
+            msg:'当前选中日期：'+date
+        })
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox aic">
+                        <div style="width: 140px"><input type="text" placeholder="选择日期" id="test2" class="form-control" /></div>
+                        <div style="width: 140px;margin-left: 30px"><input type="text" placeholder="选择日期" id="test3" class="form-control" /></div>
+                    </div>
+                </div>
+                <div class="demo-title"><span>定义不同格式的日期</span></div>
+                <div class="demo-des">
+                    使用defaultFormat参数，定义不同格式的日期。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new DatePicker({
+    input:$('#test2'),
+    defaultFormat:'yyyy/MM/dd',
+    currentDate:Date.now(),
+    onDateChange:(date)=>{
+        message({
+            type:'success',
+            msg:'当前选中日期：'+date
+        })
+    }
+});
+
+new DatePicker({
+    input:$('#test3'),
+    defaultFormat:'yyyy年MM月dd日',
+    currentDate:Date.now(),
+    onDateChange:(date)=>{
+        message({
+            type:'success',
+            msg:'当前选中日期：'+date
+        })
+    }
+});</code></pre>
+                </div>
+            </div>
+
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox aic">
+                        <div style="width: 140px"><input type="text" placeholder="选择年" id="test4" class="form-control" /></div>
+                        <div style="width: 140px;margin-left: 30px"><input type="text" placeholder="选择年月" id="test5" class="form-control" /></div>
+                    </div>
+                </div>
+                <div class="demo-title"><span>不同类型的日期选择</span></div>
+                <div class="demo-des">
+                    使用type参数，定义不同类型的日期选择。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new DatePicker({
+    input:$('#test4'),
+    type:'year',
+    defaultFormat:'yyyy年',
+    onDateChange:(date)=>{
+        message({
+            type:'success',
+            msg:'当前选中日期：'+date
+        })
+    }
+});
+
+new DatePicker({
+    input:$('#test5'),
+    type:'month',
+    defaultFormat:'yyyy年MM月',
+    onDateChange:(date)=>{
+        message({
+            type:'success',
+            msg:'当前选中日期：'+date
+        })
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div class="flexbox aic">
+                        <div style="width: 140px"><input type="text" placeholder="开始日期" id="test6" class="form-control" /></div>
+                        <span style="margin: 0 5px">-</span>
+                        <div style="width: 140px"><input type="text" placeholder="截止日期" id="test7" class="form-control" /></div>
+                    </div>
+                </div>
+                <div class="demo-title"><span>区间选择</span></div>
+                <div class="demo-des">
+                    使用两个组件组合来进行区间选择，通过setStartDate和通过setEndDate和确保选择区间。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.startDatePicker = new DatePicker({
+    input:$('#test6'),
+    onDateChange:(date)=>{
+        this.endDatePicker.setStartDate(date).pickerShow();
+    }
+});
+
+this.endDatePicker = new DatePicker({
+    input:$('#test7'),
+    onDateChange:(date)=>{
+        this.startDatePicker.setEndDate(date)
+    }
+});</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/datePicker<%=hash%>.js"></script>
+</body>
+</html>

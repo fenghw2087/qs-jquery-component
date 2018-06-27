@@ -1,0 +1,22 @@
+module.exports = [
+    'login',//登录
+    'entFile',//企业档案
+    'entFile2',//新版企业档案
+    'editEntFile',//编辑企业档案
+    'visitHistory',//走访汇总
+    'buildingManage',//楼宇管理
+    'entDetail',//企业详情
+    'entDetail2',//新版企业详情
+    'assister',//工作平台
+    'monitor',//监控预警后台
+    'person',//人才档案
+    'report',//报表中心
+    'indicatorDetail',//指标详情
+    'setting',//系统设置
+    'source',//数据中心
+    'message',//消息汇总
+    'messageDetail',//消息详情
+    'govService',//政企服务
+    'merchants',//精准招商
+    'policyFile'
+];

@@ -1,0 +1,93 @@
+@import "../../less/base";
+
+.ys-notification {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.65);
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: fixed;
+    z-index: 10010;
+    width: 384px;
+    max-width: calc(100vw - 32px);
+    margin-right: 24px;
+}
+.ys-notification-topRight {
+    right: 0;
+    top: 24px;
+    bottom: auto;
+}
+.ys-notification-bottomRight {
+
+}
+.ys-notification-info-c {
+    display: flex;
+    padding: 16px 24px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    line-height: 1.5;
+    position: relative;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transform: translate(100%,0);
+    opacity: .3;
+    transition: all .3s ease-in;
+}
+.ys-notification-info-c.active {
+    transform: translate(0,0);
+    opacity: 1;
+}
+.ys-notification-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+.ys-notification-icon > i {
+    vertical-align: top;
+}
+.ys-notification-icon > .fa-check-circle-o {
+    color: @successColor;
+}
+.ys-notification-icon > .fa-info-circle {
+    color: @infoColor;
+}
+.ys-notification-icon > .fa-exclamation-circle {
+    color: @warningColor;
+}
+.ys-notification-icon > .fa-times-circle-o {
+    color: @errorColor;
+}
+.ys-notification-close {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+    padding: 5px;
+}
+.ys-notification-close:hover {
+    color: #333;
+}
+.ys-notification-info-title {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.85);
+    margin-bottom: 8px;
+    line-height: 24px;
+    display: inline-block;
+    padding-right: 24px;
+}
+.ys-notification-info-msg {
+    color: #999;
+}
+.ys-notification-tool-btn-c {
+    position: relative;
+    margin-top: 5px;
+}
+.ys-notification-tool-btn-c > a {
+    margin-right: 10px;
+}

@@ -1,0 +1,84 @@
+@import "../../less/base";
+
+.muti-add-btn {
+    background-color: #fff;
+    line-height: 30px;
+    padding: 0 10px;
+    border: 1px solid;
+    color: @mainColor;
+    border-radius: 4px;
+    margin-right: 20px;
+    &>i {
+        margin-right: 5px;
+        font-size: 14px;
+    }
+    &:hover {
+        background-color: #f0f0f0;
+        color: @mainColor;
+    }
+}
+.muti-upload-outer {
+    width: 100%;
+    input[type="file"] {
+        display: none;
+    }
+}
+.muti-add-c {
+    display: flex;
+    align-items: center;
+}
+
+.file-item-c {
+    display: flex;
+    margin-bottom: 10px;
+    .file-icon {
+        margin-right: 10px;
+        &> .fa {
+            width: 1.4em;
+            text-align: center;
+            color: #666;
+        }
+    }
+    .file-progress {
+        width: 350px;
+        position: relative;
+        line-height: 32px;
+        height: 32px;
+        color: #999;
+    }
+    .file-bar {
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: @errorColor;
+        &.full {
+            background-color: @successColor;
+        }
+    }
+    .file-result {
+        margin-left: 5px;
+        &> .fa-check-circle-o {
+            color: @successColor;
+            display: none;
+        }
+        &> .fa-trash-o {
+           display: none;
+            color: @errorColor;
+            cursor: pointer;
+        }
+        &.full {
+            &> .fa-check-circle-o {
+                display: inline-block;
+            }
+        }
+    }
+    &:hover {
+        .fa-check-circle-o {
+            display: none !important;
+        }
+        .fa-trash-o {
+            display: inline-block !important;
+        }
+    }
+}

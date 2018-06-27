@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mutiimgviewer</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/mutiimgviewer<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="mutiimgviewerPageOuter">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <button class="btn btn-success btn-test1">预览图片</button>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    基本使用。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>this.mutiImgViewer = new MutiImgViewer();
+const imgs = [
+    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529060343132&di=df1312e72202cff3d1c9fa5e7c0d69cb&imgtype=0&src=http%3A%2F%2Fimg.go007.com%2F2017%2F03%2F01%2Fb4ed6f4247c72b3a_1.jpg',
+    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529060343132&di=80bd48e19de660ec2a1b0cbe73e958d8&imgtype=0&src=http%3A%2F%2Fimg.go007.com%2F2016%2F12%2F28%2F6d5418687df48824_5.jpg',
+    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529060343132&di=6d7bb6c7cc9240b0bcb2f3228acb18d5&imgtype=0&src=http%3A%2F%2Fimg.go007.com%2F2016%2F12%2F28%2F6d5418687df48824_7.jpg',
+    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529060343131&di=018e6c0c8dba827c68e42c59228a8e1f&imgtype=0&src=http%3A%2F%2Fwww.goumin.com%2Fattachments%2Fsale%2F0%2F0%2F13%2F3552%2F909377.jpg%3F1406510935'
+];
+that.mutiImgViewer.show(imgs,1);</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/mutiimgviewer<%=hash%>.js"></script>
+</body>
+</html>

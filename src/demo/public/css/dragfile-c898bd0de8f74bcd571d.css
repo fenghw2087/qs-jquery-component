@@ -1,0 +1,78 @@
+.ys-drag-file-outer {
+  height: 100px;
+  width: 100%;
+  border: 1px dashed #d42740;
+  background-color: #fafdff;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 30px;
+  padding: 20px 0;
+  color: #999;
+  font-size: 12px;
+  position: relative;
+}
+.ys-drag-file-outer .upload-file-btn-link {
+  color: #d42740;
+  cursor: pointer;
+}
+.ys-drag-file-outer .upload-file-btn-link:hover {
+  text-decoration: underline;
+}
+.ys-drag-file-outer > input {
+  display: none;
+}
+.ys-drag-file-outer .drag-outer {
+  display: block;
+}
+.ys-drag-file-outer .drag-file-name-c {
+  display: none;
+  width: 100%;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #333;
+}
+.ys-drag-file-outer .drag-file-name-c .drag-file-name {
+  color: #333;
+  line-height: 30px;
+  font-size: 14px;
+  margin-top: 15px;
+  -webkit-transition: margin-top 0.3s;
+  transition: margin-top 0.3s;
+}
+.ys-drag-file-outer .drag-file-name-c .drag-delete-btn {
+  opacity: 0;
+  color: #999;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+  cursor: pointer;
+}
+.ys-drag-file-outer .drag-file-name-c .drag-delete-btn:hover {
+  text-decoration: underline;
+}
+.ys-drag-file-outer .drag-file-name-c .drag-delete-btn > i {
+  top: 50%;
+  left: 50%;
+  line-height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  margin-right: 5px;
+  color: #da5451;
+  font-size: 16px;
+}
+.ys-drag-file-outer .drag-file-name-c:hover .drag-file-name {
+  margin-top: 0;
+}
+.ys-drag-file-outer .drag-file-name-c:hover .drag-delete-btn {
+  opacity: 1;
+}
+.ys-drag-file-outer.full .drag-outer {
+  display: none;
+}
+.ys-drag-file-outer.full .drag-file-name-c {
+  display: block;
+}

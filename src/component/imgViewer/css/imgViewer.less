@@ -1,0 +1,29 @@
+@import "../../less/base";
+
+.view-img-container {
+    position: fixed;
+    width: 100%;
+    min-width: 1200px;
+    height: 100%;
+    background-color: rgba(0,0,0,.7);
+    padding: 50px 100px;
+    top: 0;
+    left: 0;
+    z-index: 19999;
+    text-align: center;
+    overflow: auto;
+    display: none;
+}
+.view-img-container > img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+.view-img-container > span {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -7em;
+    background-color: #fff;
+    color: #000;
+    padding: 5px;
+}

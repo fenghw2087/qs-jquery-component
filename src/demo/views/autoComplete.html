@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>autoComplete</title>
+    <%- include('commonfile.html') %>
+    <link href="<%=filePath%>css/autoComplete<%=hash%>.css" rel="stylesheet">
+</head>
+<body>
+<%- include('header.html') %>
+<div class="content-outer">
+    <%- include('nav.html') %>
+    <div class="content-container flexbox">
+        <div class="content-c" id="autoComplete">
+            <div class="content-title"></div>
+            <div class="content-des"></div>
+            <div class="demo-section">
+                <div class="demo-show" style="min-height: 80px">
+                    <div style="width:300px">
+                        <input id="test1" type="text" placeholder="输入关键字搜索" class="form-control" />
+                    </div>
+                </div>
+                <div class="demo-title"><span>基本使用</span></div>
+                <div class="demo-des">
+                    演示一个模糊搜索的实例，键入后200ms触发_search函数，进行数据搜索并渲染列表。
+                    <i class="fa fa-code" title="查看代码"></i>
+                    <i class="fa fa-copy" title="复制代码"></i>
+                </div>
+                <div class="demo-code">
+                    <pre class="javascript"><code>new AutoComplete({
+    input:$('#test1'),
+    getData:(name)=>{
+        return _search(name)
+    },
+    formatList:(data)=>{
+        return data
+    },
+    delay:200,
+    renderLi:row=>row.name,
+    onSelect:(current)=>{
+        const url = '/component'+current.url;
+        message({
+            type:'info',
+            msg:'当前选择项目的url为：'+url
+        })
+    }
+});
+
+const _search =(val)=> {
+    val = val.toLowerCase();
+    return new window.Promise((resolve)=>{
+        const _list = navList.filter((v)=>{
+            let _str = '';
+            for(const i in v){
+                if(v.hasOwnProperty(i)){
+                    _str+=v[i].toLowerCase();
+                }
+            }
+            return _str.indexOf(val)>-1
+        });
+        resolve(_list.splice(0,10));
+    });
+};</code></pre>
+                </div>
+            </div>
+
+            <div class="params-detail">
+                <div class="params-detail-title">参数</div>
+                <div class="params-detail-table params-props-table"></div>
+            </div>
+            <div class="params-detail">
+                <div class="params-detail-title">方法</div>
+                <div class="params-detail-table params-api-table"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer.html') %>
+<script src="<%=filePath%>js/autoComplete<%=hash%>.js"></script>
+</body>
+</html>
