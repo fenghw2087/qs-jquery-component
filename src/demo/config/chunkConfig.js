@@ -3,7 +3,7 @@
 module.exports = {
     mode:'prod',
     hashChunks:{
-        reset:'-bf0c80c2172a61c15415',
+        reset:'-89121020efb9420e9570',
         datePicker:'-cf22cb28f19f049dc6c7',
         rate:'-d3a65ad733c43bad74cf',
         dropUpload:'-cbea7573becddf3b58c5',
@@ -43,7 +43,7 @@ module.exports = {
         floatModal:'-6a4e2df9d37fa61ef58d',
         autoSearch:'-0fe79a6a461ed08e522b',
         autoComplete:'-898864e687f6c490864c',
-        vendor:'-2fb050a091b2f50626c9',
+        vendor:'-83955a90e7d6261edaa9',
     },
     devConfig:{
         filePath:'http://127.0.0.1:7777/'

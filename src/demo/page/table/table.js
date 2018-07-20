@@ -119,7 +119,7 @@ class tablePage {
             headers:[
                 { name:'序号',width:50 },
                 { name:'姓名',width:200 },
-                { name:'年龄',width:200 },
+                { name: '年龄',width:200 },
                 { name:'得分',width:300 }
             ],
             renderTrs:[
