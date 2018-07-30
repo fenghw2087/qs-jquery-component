@@ -1,6 +1,7 @@
-组件库用例：
-npm install
-npm run demo-server
+组件库用例：/n
+npm install/n
+npm run start-demo/n
+即可在localhost:3000下查看页面
 
 
 前端使用webpack进行代码压缩
