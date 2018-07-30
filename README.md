@@ -1,6 +1,6 @@
-组件库用例：/n
-npm install/n
-npm run start-demo/n
+组件库用例：    
+npm install   
+npm run start-demo   
 即可在localhost:3000下查看页面
 
 
