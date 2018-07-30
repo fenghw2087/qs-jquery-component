@@ -1,3 +1,8 @@
+组件库用例：
+npm install
+npm run demo-server
+
+
 前端使用webpack进行代码压缩
 
    1.base.jsp中的 min变量  生产环境'min.' 开发环境 ''
