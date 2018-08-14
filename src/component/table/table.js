@@ -10,7 +10,6 @@ export default class Table {
      * 构造方法
      * @param outer 表格容器dom
      * @param headers 表头数据 {name,width}
-     * @param mutiHeaders 多行表头
      * @param dataSource 报个数据
      * @param renderTr 行渲染回调
      * @param renderTrs td渲染回调组
@@ -23,10 +22,9 @@ export default class Table {
      * @param sorter 排序点击回调
      * @param renderEmpty 缺省方法
      */
-    constructor({ outer, headers, mutiHeaders, dataSource, renderTr=()=>{}, renderTrs, pagination={show:false}, storage=false, loading=true, singleTr=true, emptyMsg='暂无数据', afterRender=()=>{}, sorter=()=>{}, renderEmpty }) {
+    constructor({ outer, headers=[], dataSource, renderTr=()=>{}, renderTrs, pagination={show:false}, storage=false, loading=true, singleTr=true, emptyMsg='暂无数据', afterRender=()=>{}, sorter=()=>{}, renderEmpty }) {
         this.outer = outer;
         this.headers = headers;
-        this.mutiHeaders= mutiHeaders;
         this.dataSource = dataSource;
         this.renderTr = renderTr;
         this.renderTrs = renderTrs;
@@ -40,7 +38,7 @@ export default class Table {
         this.renderEmpty = renderEmpty;
 
         if(!(outer instanceof $) || (outer instanceof $ && outer.length !== 1)) throw new Error('Table param outer must be one length jqueryDom');
-        if(!Array.isArray(this.headers) && !Array.isArray(this.mutiHeaders)) throw new Error('Table param headers or mutiHeaders must be an Array');
+        if(!this.headers.length) throw new Error('Table param header must be an Array');
         if(typeof this.renderTr !== 'function') throw new Error('Table param renderTr must be a function');
         if(typeof this.afterRender !== 'function') throw new Error('Table param afterRender must be a function');
         if(typeof this.sorter !== 'function') throw new Error('Table param sorter must be a function');

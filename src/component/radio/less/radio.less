@@ -1,0 +1,47 @@
+@import "../../less/base";
+
+.ys-com-radio-outer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  .ys-com-radio-item {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    cursor: pointer;
+    .ys-com-radio-i {
+      width: 14px;
+      height: 14px;
+      border: 1px solid @mainColor;
+      border-radius: 50%;
+      position: relative;
+      margin-right: 10px;
+      &::before {
+        display: block;
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        box-shadow: 0 0 1px @mainColor;
+        background-color: @mainColor;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -3px;
+        margin-top: -3px;
+        transform: scale(0);
+        transition: all .2s;
+      }
+    }
+    &.active .ys-com-radio-i{
+      border-color: @mainColor;
+      &::before {
+        transform: scale(1);
+      }
+    }
+    .ys-com-radio-name {
+      color: #333;
+    }
+  }
+}

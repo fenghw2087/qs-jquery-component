@@ -408,6 +408,7 @@ export default class DatePicker {
         if(this.endDate && this.currentDate > this.endDate){
             this.currentDate = new Date(this.endDate);
         }
+        return this;
     }
 
     _bindEvent() {

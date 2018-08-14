@@ -40,6 +40,9 @@ export default class Dropdown {
         this.autoShow = autoShow;
         this.btnStyle = btnStyle;
         this.hasSearch = hasSearch;
+        if(this.hasSearch){
+            this.menuStyle = menuStyle || 'max-height:300px;overflow-y:auto';
+        }
 
         if(!(obj instanceof $) || (obj instanceof $ && obj.length !== 1)) throw new Error('Dropdown param obj must be an one length jqueryDom');
         if(typeof this.onSelectChange !== 'function') throw new Error('Dropdown param onSelectChange must be a function');

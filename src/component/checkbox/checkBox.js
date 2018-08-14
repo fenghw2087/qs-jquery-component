@@ -14,8 +14,9 @@ export default class CheckBox {
      * @param onChange 触发状态改变回调
      * @param checked 初始是否被选中，默认不选中
      * @param color 颜色，默认000
+     * @param id
      */
-    constructor({ obj, onChange=()=>{}, checked = false, color='inherit' }){
+    constructor({ obj, onChange=()=>{},id, checked = false, color='inherit' }){
         this.obj = obj;
         if(!(obj instanceof $) || (obj instanceof $ && obj.length !== 1)) throw new Error('CheckBox params obj must be an one length jqueryDom');
         if(typeof onChange !== 'function') throw new Error('CheckBox params onChange must be an Function');
@@ -24,7 +25,7 @@ export default class CheckBox {
         this.color = color;
 
         this.checkbox = null;
-        this.name = 'checkbox'+Math.round(Math.random()*100000000);
+        this.name = id || 'checkbox'+Math.round(Math.random()*100000000);
 
         this._render();
     }

@@ -17,6 +17,7 @@ export default class Checks {
      * @param list 数据数组
      * @param renderLi 选项渲染回调
      * @param checkIds 默认选中的id
+     * @param onChange
      */
     constructor({ obj, list=[], renderLi=row=>row.name, checkIds='',onChange=()=>{} }) {
         this.outer = obj;
@@ -51,6 +52,23 @@ export default class Checks {
         })
     };
 
+    setIndexs =(indexs)=> {
+        this.checkboxs.forEach((v,i)=>{
+            v.setChecked(indexs.indexOf(i)>-1,true)
+        });
+        this.checkIds = this.list.reduce((o,v,i)=>{
+            if(indexs.indexOf(i) > -1){
+                o.push(v.id);
+            }
+            return o;
+        },[]);
+    };
+
+    reset =()=> {
+        this.setData();
+        return this;
+    };
+
     /**
      * 动态设置选项
      * @param list
@@ -62,11 +80,13 @@ export default class Checks {
 
     _renderList =()=> {
         this.outer.find('.checks-item-outer').html(this.list.map((v,i)=>{
-            return `<div class="checks-item-c flexbox aic"><div class="checks-item-check-box"></div><div class="checks-item-name">${ this.renderLi(v,i) }</div></div>`
+            return `<div class="checks-item-c flexbox aic"><div class="checks-item-check-box"></div><label for="checkbox${Math.ceil(Math.random()*1000000000)}" class="checks-item-name">${ this.renderLi(v,i) }</label></div>`
         }).join(''));
         this.checkboxs = [].map.call(this.outer.find('.checks-item-check-box'),(v,i)=>{
+            const obj = $(v);
             return new CheckBox({
-                obj:$(v),
+                obj,
+                id:obj.next().attr('for'),
                 onChange:(checked)=>{
                     this.list[i].checked = checked;
                     this.onChange(this.list[i],i,this.list)
